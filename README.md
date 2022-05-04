@@ -1,10 +1,10 @@
-# Nix Utils for Yatima Inc
+# Nix Templates and utilities for Decarbonify
 
 This contains nix utillities used across many projects by Yatima Inc.
 
 ## Templates
 
-To use a template, for example the lean package template, run `nix flake template -t github:yatima-inc/nix-utils#leanTemplate`.
+To use a template, for example the lean package template, run `nix flake template -t github:decarbonify/decarbonify-nix-templates#leanTemplate`.
 
 | Template name       | Description                                                                        |
 |---------------------|------------------------------------------------------------------------------------|

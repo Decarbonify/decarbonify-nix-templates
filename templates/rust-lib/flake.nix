@@ -26,22 +26,26 @@
         nixpkgs = pkgs;
       };
       getRust =
-        { channel ? "nightly"
-        , date
+        { channel
+        , date ? null
         , sha256
         , targets ? [
-          "wasm32-unknown-unknown"
-          "wasm32-wasi"
-          # "wasm32-unknown-emscripten"
-        ]
+            "wasm32-unknown-unknown"
+            "wasm32-wasi"
+            # "wasm32-unknown-emscripten"
+          ]
         }: (rustTools.rustChannelOf {
           inherit channel date sha256;
         }).rust.override {
           inherit targets;
           extensions = [ "rust-src" "rust-analysis" ];
         };
-      rust2022-03-15 = getRust { date = "2022-03-15"; sha256 = "sha256-C7X95SGY0D7Z17I8J9hg3z9cRnpXP7FjAOkvEdtB9nE="; };
-      rust = rust2022-03-15;
+      rust2022-03-15 = getRust { channel = "nightly"; date = "2022-03-15"; sha256 = "sha256-C7X95SGY0D7Z17I8J9hg3z9cRnpXP7FjAOkvEdtB9nE="; };
+      rust-stable = getRust {
+        channel = "stable";
+        sha256 = "sha256-oro0HsosbLRAuZx68xd0zfgPl6efNj2AQruKRq3KA2g=";
+      };
+      rust = rust-stable;
       # Get a naersk with the input rust version
       naerskWithRust = rust: naersk.lib."${system}".override {
         rustc = rust;

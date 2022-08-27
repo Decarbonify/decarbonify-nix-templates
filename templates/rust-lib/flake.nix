@@ -21,6 +21,7 @@
     , nixpkgs
     , flake-utils
     , naersk
+    , fenix
     }:
     flake-utils.lib.eachDefaultSystem (system:
     let

@@ -1,5 +1,5 @@
 {
-  description = "Nix utils used across yatima inc projects.";
+  description = "Nix utils used across decarbonify projects.";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
     flake-utils = {
